@@ -18,9 +18,7 @@ import java.util.Map;
 
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import com.velocitypowered.proxy.VelocityServer;
-import com.velocitypowered.proxy.connection.MinecraftConnection;
 import com.velocitypowered.proxy.network.ConnectionManager;
-import com.velocitypowered.proxy.protocol.StateRegistry;
 import com.velocitypowered.proxy.protocol.packet.brigadier.ArgumentIdentifier;
 import com.velocitypowered.proxy.protocol.packet.brigadier.ArgumentPropertyRegistry;
 import com.velocitypowered.proxy.protocol.packet.brigadier.ArgumentPropertySerializer;
@@ -134,8 +132,8 @@ public class Ambassador {
 
     Method argumentRegistry = ArgumentPropertyRegistry.class.getDeclaredMethod("register", ArgumentIdentifier.class, Class.class, ArgumentPropertySerializer.class);
     argumentRegistry.setAccessible(true);
-    argumentRegistry.invoke(null,ArgumentIdentifier.id("forge:enum", mapSet(MINECRAFT_1_19, 50)), EnumArgumentProperty.class, EnumArgumentPropertySerializer.ENUM);
-    argumentRegistry.invoke(null,ArgumentIdentifier.id("forge:modid", mapSet(MINECRAFT_1_19, 51)), ModIdArgumentProperty.class,
+    argumentRegistry.invoke(null,ArgumentIdentifier.id("forge:enum", mapSet(MINECRAFT_1_19, -255)), EnumArgumentProperty.class, EnumArgumentPropertySerializer.ENUM);
+    argumentRegistry.invoke(null,ArgumentIdentifier.id("forge:modid", mapSet(MINECRAFT_1_19, -254)), ModIdArgumentProperty.class,
             new ArgumentPropertySerializer<>() {
               @Override
               public ModIdArgumentProperty deserialize(ByteBuf buf, ProtocolVersion protocolVersion) {
