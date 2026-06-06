@@ -50,7 +50,7 @@ public class FML2CRPMResetCompleteDecoder extends ChannelInboundHandlerAdapter {
       }
       buf.readerIndex(originalReaderIndex);
 
-      if (packetId < 0 || packetId > 0x10) {
+      if (packetId < 0 || packetId > 0xc) {
         if (Ambassador.getInstance().config.isDebugMode()) {
           logger.debug("Dropping invalid login packet ID 0x{} during reset phase", Integer.toHexString(packetId));
         }
